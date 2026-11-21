@@ -3,6 +3,8 @@ package org.libsdl.app;
 import android.util.Log;
 
 /**
+ * EUR fork: table addresses are the European (GLMP01) ones (version_addrs.inc: lbl_803D48A0 -> lbl_803C1E60,
+ * lbl_8033B590 -> lbl_8032C5D8, same sizes). The USA addresses are quoted below.
  * Options > Cheats > Weaker Boos: every Boo's health is kept at 25 or less, in the base game and Premium Deluxe.
  * The game's live characters are the 128 pointers at 0x803D48A0 (slot 0 = Luigi); a character's type is the
  * word at +0x3C and its health the s16 at +0xFC. Type names come from the game's own type table (0x8033B590,
@@ -14,8 +16,8 @@ final class WeakerBoos {
     private WeakerBoos() { }
 
     private static final String TAG = "LMWeakerBoos";
-    private static final int SLOTS = 0x803D48A0, SLOT_COUNT = 128;
-    private static final int TYPE_TABLE = 0x8033B590, TYPE_SIZE = 0x1C, TYPE_COUNT = 0x29C8 / 0x1C;
+    private static final int SLOTS = 0x803C1E60, SLOT_COUNT = 128;          // EUR (GLMP01); USA 0x803D48A0
+    private static final int TYPE_TABLE = 0x8032C5D8 /* EUR; USA 0x8033B590 */, TYPE_SIZE = 0x1C, TYPE_COUNT = 0x29C8 / 0x1C;
     private static final int HEALTH = 25;
     private static final java.util.Set<String> BOO_NAMES = new java.util.HashSet<>(java.util.Arrays.asList(
             "telesa", "telesa1", "btelesa", "bmtelesa", "dltelesa"));

@@ -6,11 +6,11 @@ android {
     namespace = "org.libsdl.app"
     compileSdkVersion 35
     defaultConfig {
-        applicationId "com.personal.luigismansion"
+        applicationId "com.personal.luigismansion.eur"
         minSdkVersion 33
         targetSdkVersion 35
         versionCode 8
-        versionName "3.2.1"
+        versionName "3.2.1-eur"
         ndk {
             abiFilters 'arm64-v8a'
         }
@@ -24,13 +24,13 @@ android {
     productFlavors {
         player {
             dimension "channel"
-            manifestPlaceholders = [appLabel: "Luigis Mansion Recomp"]
+            manifestPlaceholders = [appLabel: "Luigis Mansion Recomp EUR"]
         }
         dev {
             dimension "channel"
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
-            manifestPlaceholders = [appLabel: "LM Dev"]
+            manifestPlaceholders = [appLabel: "LM Dev EUR"]
         }
     }
     buildTypes {

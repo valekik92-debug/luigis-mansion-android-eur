@@ -7,8 +7,8 @@ import java.util.Locale;
 /** Transactional installation: the existing disc remains usable until the copy is complete. */
 final class DiscInstaller {
     interface Progress { void update(long done,long total); }
-    /** Disc versions this build of the game runs. The game engine library is built for the USA release. */
-    static final String SUPPORTED_ID = "GLME01";
+    /** Disc version this build of the game runs. EUR fork: the game engine library is built for the European (PAL) release. */
+    static final String SUPPORTED_ID = "GLMP01";
 
     /** The 6-letter game ID at the start of a GameCube ISO (e.g. GLME01), or null. */
     static String gameId(File f) {
@@ -39,9 +39,9 @@ final class DiscInstaller {
     }
 
     static String regionMessage(String id) {
-        if("GLMP01".equals(id))
-            return "This is the European version (GLMP01). This build of the game runs the USA version (GLME01) only for now.";
-        return "This is the "+regionName(id)+" version ("+id+"). Only the USA version (GLME01) is supported.";
+        if("GLME01".equals(id))
+            return "This is the USA version (GLME01). This EUR build of the game runs the European version (GLMP01) only.";
+        return "This is the "+regionName(id)+" version ("+id+"). Only the European version (GLMP01) is supported.";
     }
 
     /** Null when the ISO is a disc this build can run; otherwise a message for the player. */
@@ -64,7 +64,7 @@ final class DiscInstaller {
             if(!SUPPORTED_ID.equals(id)) return regionMessage(id);
             input.seek(hdr+7);
             int rev=input.readUnsignedByte();
-            if(rev!=0) return "This disc is revision "+rev+". Only revision 0 of the USA version is supported.";
+            if(rev!=0) return "This disc is revision "+rev+". Only revision 0 of the European version is supported.";
             return null;
         } catch(Exception e) { return "Could not read the disc file."; }
     }

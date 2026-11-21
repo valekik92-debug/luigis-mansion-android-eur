@@ -3,7 +3,10 @@ package org.libsdl.app;
 /**
  * Reads the game's own state (read only) through the native helper (liblmmods).
  *
- * Game Boy Horror search view: the game's view mode word r13-0x7F70 = 0x804CFFF0 is 2 while the
+ * EUR fork: addresses are the European (GLMP01) ones, mapped from the USA ones with the recompiler's
+ * version_addrs.inc (USA lbl_804CFFF0 -> PAL lbl_804BD6B8).
+ *
+ * Game Boy Horror search view: the game's view mode word (USA 0x804CFFF0) is 2 while the
  * Game Boy Horror's first-person search view is up (engine source, coop_fixes.cpp kGbhMode; the same
  * address in Premium Deluxe, whose r13 is also 0x804D7F60). In that view the walking stick looks
  * around with up and down the other way round, so the port turns the stick's Y over while it is up.
@@ -16,7 +19,7 @@ final class GuestMem {
     static native long nativeRead32(int addr);
     static native int nativeWrite16(int addr, int value);
 
-    private static final int GBH_MODE = 0x804CFFF0;
+    private static final int GBH_MODE = 0x804BD6B8;  // EUR (GLMP01); USA 0x804CFFF0
     private static volatile long checkedAt;
     private static volatile boolean gbh;
 
